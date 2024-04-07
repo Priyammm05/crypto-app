@@ -28,6 +28,7 @@
 		CA31CDF72BC11D300065A639 /* CoinImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA31CDF62BC11D300065A639 /* CoinImageViewModel.swift */; };
 		CA31CDF92BC11D6F0065A639 /* CoinImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA31CDF82BC11D6F0065A639 /* CoinImageService.swift */; };
 		CA31CDFB2BC11EA60065A639 /* CoinImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA31CDFA2BC11EA60065A639 /* CoinImageView.swift */; };
+		CA31CDFD2BC285420065A639 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA31CDFC2BC285420065A639 /* LocalFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		CA31CDF62BC11D300065A639 /* CoinImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageViewModel.swift; sourceTree = "<group>"; };
 		CA31CDF82BC11D6F0065A639 /* CoinImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageService.swift; sourceTree = "<group>"; };
 		CA31CDFA2BC11EA60065A639 /* CoinImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageView.swift; sourceTree = "<group>"; };
+		CA31CDFC2BC285420065A639 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				CA31CDF32BC117210065A639 /* NetworkingManager.swift */,
+				CA31CDFC2BC285420065A639 /* LocalFileManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				CA31CDE82BBFC8D20065A639 /* CoinRowView.swift in Sources */,
 				CA31CDEE2BBFD5CF0065A639 /* HomeViewModel.swift in Sources */,
 				CA31CDF72BC11D300065A639 /* CoinImageViewModel.swift in Sources */,
+				CA31CDFD2BC285420065A639 /* LocalFileManager.swift in Sources */,
 				CA31CDE12BBEAF6D0065A639 /* CircleButton.swift in Sources */,
 				CA31CDFB2BC11EA60065A639 /* CoinImageView.swift in Sources */,
 				CA31CDAE2BBEAA030065A639 /* ContentView.swift in Sources */,
