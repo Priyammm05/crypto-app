@@ -134,7 +134,7 @@ extension HomeView{
             HStack(spacing: 4) {
                 Text("Coin")
                 Image(systemName: "chevron.down")
-//                    .opacity((viewModel.sortOptions == .rank || viewModel.sortOptions == .rankReversed) ? 1.0 : 0.0)
+                    .opacity((viewModel.sortOptions == .rank || viewModel.sortOptions == .rankReversed) ? 1.0 : 0.0)
                     .rotationEffect(Angle(degrees: viewModel.sortOptions == .rank ? 0 : 180))
             }
             .onTapGesture {
@@ -148,7 +148,7 @@ extension HomeView{
                 HStack(spacing: 4) {
                     Text("Holdings")
                     Image(systemName: "chevron.down")
-//                        .opacity((viewModel.sortOptions == .holdings || viewModel.sortOptions == .holdingsReversed) ? 1.0 : 0.0)
+                        .opacity((viewModel.sortOptions == .holdings || viewModel.sortOptions == .holdingsReversed) ? 1.0 : 0.0)
                         .rotationEffect(Angle(degrees: viewModel.sortOptions == .holdings ? 0 : 180))
                 }
                 .onTapGesture {
@@ -160,7 +160,7 @@ extension HomeView{
             HStack(spacing: 4) {
                 Text("Price")
                 Image(systemName: "chevron.down")
-//                    .opacity((viewModel.sortOptions == .price || viewModel.sortOptions == .priceReversed) ? 1.0 : 0.0)
+                    .opacity((viewModel.sortOptions == .price || viewModel.sortOptions == .priceReversed) ? 1.0 : 0.0)
                     .rotationEffect(Angle(degrees: viewModel.sortOptions == .price ? 0 : 180))
             }
             .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
