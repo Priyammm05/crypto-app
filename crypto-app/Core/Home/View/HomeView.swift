@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var showPortfolio: Bool = false
+    @State private var showPortfolioView: Bool = false
     @EnvironmentObject private var viewModel: HomeViewModel
     
     var body: some View {
@@ -17,10 +18,21 @@ struct HomeView: View {
 //            background layer
             Color.theme.background
                 .ignoresSafeArea()
+                .sheet(
+                    isPresented: $showPortfolioView,
+                    content: {
+                        PortfolioView()
+                            .environmentObject(viewModel)
+                    }
+                    
+                )
             
 //            Content layer
             VStack{
                 homeHeader
+                
+                HomeStatsView(showPortfolio: $showPortfolio)
+                SearchBarView(searchText: $viewModel.searchText)
                 
                 columnTitles
                 
@@ -31,10 +43,10 @@ struct HomeView: View {
                 
                 if showPortfolio {
                     ZStack(alignment: .top) {
-                        if viewModel.portfolioCoins.isEmpty {
-                            portfolioCoinsView
+                        if viewModel.portfolioCoins.isEmpty && viewModel.searchText.isEmpty {
+                            portfolioEmptyText
                         } else {
-                            portfolioCoinsView
+                            portfolioCoinsList
                         }
                     }
                     .transition(.move(edge: .trailing))
@@ -62,6 +74,12 @@ extension HomeView{
         HStack{
             CircleButton(iconName: showPortfolio ? "plus" : "info")
                 .animation(.none)
+                .onTapGesture {
+                    if showPortfolio{
+                        showPortfolioView.toggle()
+                        print("\(showPortfolioView)")
+                    }
+                }
                 .background(CircleButtonAnimationView(animate: $showPortfolio))
             Spacer()
             Text(showPortfolio ? "Portfolio" : "Live Prices")
@@ -92,14 +110,23 @@ extension HomeView{
         .listStyle(PlainListStyle())
     }
     
-    private var portfolioCoinsView: some View{
+    private var portfolioCoinsList: some View{
         List{
-            ForEach(viewModel.allCoins) { coin in
-                CoinRowView(coin: coin, showHoldingColumn: false)
+            ForEach(viewModel.portfolioCoins) { coin in
+                CoinRowView(coin: coin, showHoldingColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
             }
         }
         .listStyle(PlainListStyle())
+    }
+    
+    private var portfolioEmptyText: some View {
+        Text("You haven't added any coins to your portfolio yet. Click the + button to get started! 🧐")
+            .font(.callout)
+            .foregroundColor(Color.theme.accent)
+            .fontWeight(.medium)
+            .multilineTextAlignment(.center)
+            .padding(50)
     }
     
     private var columnTitles: some View {

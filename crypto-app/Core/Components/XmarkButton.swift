@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct XmarkButton: View {
+    let dismiss: DismissAction
+        
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            dismiss()
+        }, label: {
+            Image(systemName: "xmark")
+                .font(.headline)
+        })
     }
 }
 
-#Preview {
-    XmarkButton()
+struct XMarkButton_Previews: PreviewProvider {
+    static var previews: some View {
+        @Environment(\.dismiss) var dismiss
+        
+        XmarkButton(dismiss: dismiss)
+    }
 }
