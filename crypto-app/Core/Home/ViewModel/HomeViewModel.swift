@@ -58,6 +58,13 @@ class HomeViewModel: ObservableObject{
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
     }
     
+    func reloadData(){
+        isLoading = true
+        coinDataService.getCoins()
+        marketDataService.getData()
+        HapticManger.notification(type: .success)
+    }
+    
     private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
         guard !text.isEmpty else {
             return coins
@@ -105,7 +112,7 @@ class HomeViewModel: ObservableObject{
             portfolioCoins
             .map { (coin) -> Double in
                 let currentValue = coin.currentHoldingsValue
-                let percentChange = (coin.priceChangePercentage24H ?? 0.0) / 100
+                let percentChange = (coin.priceChangePercentage24H!) / 100
                 let previousValue = currentValue / (1 + percentChange)
                 return previousValue
             }
@@ -113,7 +120,7 @@ class HomeViewModel: ObservableObject{
         
         let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
             
-        let portfolio = StatisticModel(title: "Portfolio Value", value: portfolioValue.asCurrencyWith2Decimals(), percentageChange: percentageChange)
+        let portfolio = StatisticModel(title: "Portfolio Value", value: portfolioValue.asCurrencyWith2Decimals(), percentageChange: (percentageChange))
             
         stats.append(contentsOf: [
             marketCap,

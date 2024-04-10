@@ -163,10 +163,12 @@ extension HomeView{
                 
             Button(action: {
                 withAnimation(.linear(duration: 2.0)) {
+                    viewModel.reloadData()
                 }
             }, label: {
                 Image(systemName: "goforward")
             })
+            .rotationEffect(Angle(degrees: viewModel.isLoading ? 360: 0), anchor: UnitPoint.center)
         }
         .font(.caption)
         .foregroundColor(Color.theme.secondaryText)
