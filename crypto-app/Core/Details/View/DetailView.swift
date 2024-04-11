@@ -20,9 +20,11 @@ struct DetailLoadingView: View{
 }
 
 struct DetailView: View {
+    @StateObject var viewModel: DetailViewModel
     let coin: CoinModel
     
     init(coin: CoinModel) {
+        _viewModel = StateObject(wrappedValue: DetailViewModel(coin: coin))
         self.coin = coin
     }
     
