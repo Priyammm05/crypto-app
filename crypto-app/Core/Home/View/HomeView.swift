@@ -14,6 +14,7 @@ struct HomeView: View {
     @EnvironmentObject private var viewModel: HomeViewModel
     @State private var selectedCoin: CoinModel? = nil
     @State private var showDetailView: Bool = false
+    @State private var showSettingsView: Bool = false
     
     var body: some View {
         ZStack{
@@ -56,6 +57,13 @@ struct HomeView: View {
                 
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
             }
+            .sheet(
+                isPresented: $showSettingsView,
+                content: {
+                    SettingView()
+                }
+                
+            )
                 
         }
         .background(
@@ -88,7 +96,8 @@ extension HomeView{
                 .onTapGesture {
                     if showPortfolio{
                         showPortfolioView.toggle()
-                        print("\(showPortfolioView)")
+                    }else{
+                        showSettingsView.toggle()
                     }
                 }
                 .background(CircleButtonAnimationView(animate: $showPortfolio))
